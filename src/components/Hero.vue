@@ -34,12 +34,15 @@
       </div>
     </div>
   </div>
+  <!-- Testing contentful connection -->
+  <!-- <img v-if="useContentful().contentfulData.value" :src="useContentful().contentfulData.value?.[0].profileImage.url"> -->
 </div>
 </template>
 
 <script setup lang="ts">
 
 import ImageFile from '~/models/ImageFile'
+// import useContentful from '~/api/useContentful'
 
 const ethZurichImg = ref(
   new ImageFile({
@@ -166,41 +169,5 @@ const handleLinkClick = () => {
 .hero__button-link
   width 100%
   text-decoration none
-
-
-// .hero__text-container
-//   padding-top 100px
-//   display flex
-//   flex-direction column
-//   align-items flex-start
-//   max-width 100%
-
-
-// .hero__text-content
-//   width 1100px
-//   max-width 100%
-//   margin-top 40px
-//   color var(--col-primary-action)
-//   font-family "Archivo SemiExpanded", Verdana, sans-serif
-//   font-size 40px
-//   line-height 51px
-
-
-// @media (max-width 1120px)
-//   .hero__text-content
-//     font-size 30px
-//     line-height 40px
-
-
-// @media (max-width 600px)
-//   .hero__text-content
-//     font-size 23px
-//     line-height 35px
-
-// #hero-buttons
-//   display block
-//   position relative
-//   top -80px
-//   visibility hidden
 
 </style>
