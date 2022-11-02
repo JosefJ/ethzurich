@@ -6,15 +6,13 @@
 </template>
 
 <script setup lang="ts">
-// import useContentful from '~/api/useContentful'
+import useContentful from '~/api/useContentful'
 
-// const { fetchContentfulData } = useContentful()
-// const { mergeContentfulDataWithLocalData } = usePieces()
+const { fetchContentfulData } = useContentful()
 
-// onMounted(async () => {
-//   await fetchContentfulData()
-//   mergeContentfulDataWithLocalData()
-// })
+onMounted(async () => {
+  await fetchContentfulData()
+})
 
 </script>
 
@@ -40,12 +38,6 @@ html
 //   font-family RalewayDots
 //   unicode-range U+000-5FF
 //   src url("~/assets/fonts/Raleway_Dots/RalewayDots-Regular.ttf")
-
-// @font-face
-//   font-family BungeeHairline
-//   font-weight normal
-//   unicode-range U+000-5FF
-//   src url("~/assets/fonts/Bungee_Hairline/BungeeHairline-Regular.ttf")
 
 body
   font-family sans-serif
