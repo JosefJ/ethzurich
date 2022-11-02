@@ -12,7 +12,6 @@
         <a
           href="#"
           target="_blank"
-
           @click.prevent="handleLinkClick"
           class="hero__button-link"
         >
