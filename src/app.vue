@@ -23,7 +23,8 @@ onMounted(async () => {
 
 :root
   // colors
-  --col-primary-action #5400ff
+  --col-primary-action #0aff44
+  --col-secondary-action #61ffff
   --col-primary-accent #ff0
   --col-light-gray-bg rgb(0 0 0 / 8%)
   --mobile-breakpoint 1120px
@@ -34,14 +35,15 @@ html
   scroll-behavior smooth
   transition all 0.3s
 
-// @font-face
-//   font-family RalewayDots
-//   unicode-range U+000-5FF
-//   src url("~/assets/fonts/Raleway_Dots/RalewayDots-Regular.ttf")
+@font-face
+  font-family Formular
+  unicode-range U+000-5FF
+  src url("~/assets/Formular-Medium.otf")
 
 body
-  font-family sans-serif
+  font-family Formular, sans-serif
   margin 0
+  background-color black
 
 
 </style>
