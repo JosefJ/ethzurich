@@ -67,7 +67,7 @@ mobile-breakpoint = 700px
   justify-content space-between
 
   @media (min-width mobile-breakpoint)
-    background-image url("~/ETH_Zu_header.jpg")
+    background-image url("ETH_Zu_header.jpg")
     background-repeat no-repeat
     background-size 100%
     justify-content end
@@ -78,12 +78,12 @@ mobile-breakpoint = 700px
 .hero__image
   width 100%
   height 200px
-  background-image url("~/ETH_Zu_header-mobile.jpg")
+  background-image url("ETH_Zu_header-mobile.jpg")
   background-repeat no-repeat
   background-size 100%
 
   @media (min-width mobile-breakpoint)
-    background-image url("~/ETH_Zu_header.jpg")
+    background-image url("ETH_Zu_header.jpg")
 
 .hero__is-desktop
   display none
