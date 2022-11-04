@@ -122,7 +122,7 @@ mobile-breakpoint = 700px
   width 100%
   height clamp(75px, 16vw, 100px)
   font-weight bold
-  font-size clamp(1rem, 4.3vw, 1.5rem)
+  font-size clamp(1rem, 4.5vw, 1.5rem)
   background linear-gradient(var(--col-secondary-action), var(--col-primary-action)) padding-box,
     linear-gradient(to right, var(--col-secondary-action), var(--col-primary-action)) border-box
   border-radius 50em
