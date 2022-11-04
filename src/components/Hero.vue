@@ -65,6 +65,7 @@ mobile-breakpoint = 700px
   text-align justify
   height 100vh
   gap 1rem
+  // font-family Formular, Helvetica, sans-serif
 
   @media (min-width mobile-breakpoint)
     background-image url("/ETH_Zu_header.jpg")
@@ -126,8 +127,7 @@ mobile-breakpoint = 700px
   color black
   text-align center
   width 100%
-  height clamp(75px, 16vw, 100px)
-  font-weight bold
+  height clamp(85px, 16vw, 120px)
   font-size clamp(1rem, 4.5vw, 1.5rem)
 
   &::before
