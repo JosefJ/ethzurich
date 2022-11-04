@@ -18,6 +18,9 @@ export default function useContentful() {
             fileName
             url
           }
+          description
+          role
+          twitter
         }
       }
     }`
