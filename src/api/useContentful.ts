@@ -18,9 +18,6 @@ export default function useContentful() {
             fileName
             url
           }
-          description
-          role
-          twitter
         }
       }
     }`
@@ -41,9 +38,7 @@ export default function useContentful() {
 
     try {
       const response = await fetch(fetchUrl, fetchOptions)
-      console.log('response: ', response)
       const JSONResponse = await response.json()
-      console.log('JSONResponse: ', JSONResponse)
 
       contentfulData.value = JSONResponse.data.ethZurichPeopleCollection.items
     } catch (error) {

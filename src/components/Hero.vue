@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 import ImageFile from '~/models/ImageFile'
-import useContentful from '~/api/useContentful'
+// import useContentful from '~/api/useContentful'
 
 const ethZurichImgMobile = ref(
   new ImageFile({
@@ -67,7 +67,7 @@ mobile-breakpoint = 700px
   justify-content space-between
 
   @media (min-width mobile-breakpoint)
-    background-image url("ETH_Zu_header.jpg")
+    background-image url("/ETH_Zu_header.jpg")
     background-repeat no-repeat
     background-size 100%
     justify-content end
@@ -78,12 +78,12 @@ mobile-breakpoint = 700px
 .hero__image
   width 100%
   height 200px
-  background-image url("ETH_Zu_header-mobile.jpg")
+  background-image url("/ETH_Zu_header-mobile.jpg")
   background-repeat no-repeat
   background-size 100%
 
   @media (min-width mobile-breakpoint)
-    background-image url("ETH_Zu_header.jpg")
+    background-image url("/ETH_Zu_header.jpg")
 
 .hero__is-desktop
   display none
@@ -120,10 +120,9 @@ mobile-breakpoint = 700px
   color black
   text-align center
   width 100%
-  height 100px
+  height clamp(75px, 16vw, 100px)
   font-weight bold
-  font-size clamp(1rem, 6vw, 1.5rem)
-  // stylelint-disable-next-line declaration-colon-newline-after
+  font-size clamp(1rem, 5vw, 1.5rem)
   background linear-gradient(var(--col-secondary-action), var(--col-primary-action)) padding-box,
     linear-gradient(to right, var(--col-secondary-action), var(--col-primary-action)) border-box
   border-radius 50em
@@ -149,7 +148,8 @@ mobile-breakpoint = 700px
 
 .hero__button:hover
 .hero__button:focus
-  box-shadow inset 30px -8em 0 0 var(--col-primary-action)
+  background linear-gradient(var(--col-primary-action), var(--col-secondary-action)) padding-box,
+    linear-gradient(to right, var(--col-secondary-action), var(--col-primary-action)) border-box
 
 .hero__button-link
   width 100%
