@@ -20,7 +20,6 @@
 
           <a
             href="mailto:contact@ethzuri.ch"
-            target="_blank"
             class="hero__button-link"
           >
             <button class="hero__button">
