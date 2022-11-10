@@ -9,9 +9,8 @@
       <div class="hero__buttons">
         <div class="hero__buttons-row">
           <a
-            href="#"
+            href="https://cfp.paralelnipolis.cz/ethzuri-ch-2022/cfp"
             target="_blank"
-            @click.prevent="handleLinkClick"
             class="hero__button-link"
           >
             <button class="hero__button">
@@ -20,9 +19,8 @@
           </a>
 
           <a
-            href="#"
+            href="mailto:contact@ethzuri.ch"
             target="_blank"
-            @click.prevent="handleLinkClick"
             class="hero__button-link"
           >
             <button class="hero__button">
