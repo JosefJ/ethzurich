@@ -9,9 +9,8 @@
       <div class="hero__buttons">
         <div class="hero__buttons-row">
           <a
-            href="#"
+            href="https://cfp.paralelnipolis.cz/ethzuri-ch-2022/cfp"
             target="_blank"
-            @click.prevent="handleLinkClick"
             class="hero__button-link"
           >
             <button class="hero__button">
@@ -20,9 +19,7 @@
           </a>
 
           <a
-            href="#"
-            target="_blank"
-            @click.prevent="handleLinkClick"
+            href="mailto:contact@ethzuri.ch"
             class="hero__button-link"
           >
             <button class="hero__button">
@@ -65,6 +62,7 @@ mobile-breakpoint = 700px
   text-align justify
   height 100vh
   gap 1rem
+  // font-family Formular, Helvetica, sans-serif
 
   @media (min-width mobile-breakpoint)
     background-image url("/ETH_Zu_header.jpg")
@@ -112,7 +110,13 @@ mobile-breakpoint = 700px
   justify-content space-between
 
 .hero__button
-  transition all 0.3s
+  position relative
+  border-radius 50em
+  display inline-flex
+  border 5px solid transparent
+  background linear-gradient(var(--col-secondary-action), var(--col-primary-action)) padding-box,
+    linear-gradient(to right, var(--col-secondary-action), var(--col-primary-action)) border-box
+  z-index 2
   cursor pointer
   justify-content center
   align-items center
@@ -120,15 +124,24 @@ mobile-breakpoint = 700px
   color black
   text-align center
   width 100%
-  height clamp(75px, 16vw, 100px)
-  font-weight bold
-  font-size clamp(1rem, 4.3vw, 1.5rem)
-  background linear-gradient(var(--col-secondary-action), var(--col-primary-action)) padding-box,
-    linear-gradient(to right, var(--col-secondary-action), var(--col-primary-action)) border-box
-  border-radius 50em
-  border 5px solid transparent
-  position relative
-  display inline-flex
+  height clamp(85px, 16vw, 120px)
+  font-size clamp(1rem, 4.5vw, 1.5rem)
+
+  &::before
+    position absolute
+    content ""
+    background linear-gradient(var(--col-primary-action), var(--col-secondary-action)) padding-box,
+      linear-gradient(to right, var(--col-secondary-action), var(--col-primary-action)) border-box
+    inset 0 // same as { top: 0; right: 0; bottom: 0; left: 0; }
+    z-index -1
+    opacity 0
+    border-radius 50em
+    transition opacity 0.2s linear
+
+
+.hero__button:hover::before
+  opacity 1
+
 
 .hero__buttons-row
   display flex
@@ -145,11 +158,6 @@ mobile-breakpoint = 700px
 
   .hero__button-one-button
     max-width 100%
-
-.hero__button:hover
-.hero__button:focus
-  background linear-gradient(var(--col-primary-action), var(--col-secondary-action)) padding-box,
-    linear-gradient(to right, var(--col-secondary-action), var(--col-primary-action)) border-box
 
 .hero__button-link
   width 100%

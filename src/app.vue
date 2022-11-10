@@ -30,20 +30,20 @@ onMounted(async () => {
   --mobile-breakpoint 1120px
   --app-padding 15px
 
+@font-face
+  font-family Formular
+  src local("Formular"),
+    url("~/assets/Formular-Medium.otf") format("truetype")
 
 html
   scroll-behavior smooth
   transition all 0.3s
 
-@font-face
-  font-family Formular
-  unicode-range U+000-5FF
-  src url("~/assets/Formular-Medium.otf")
+body *
+  font-family Formular, Helvetica, sans-serif
 
 body
-  font-family Formular, sans-serif
   margin 0
   background-color black
-
 
 </style>
