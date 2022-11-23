@@ -16,11 +16,16 @@
           <button class="hero__button">Apply as a speaker</button>
         </a>
 
-        <a href="/ETHZuri.ch_PitchDeck.pdf" target="_blank" class="hero__button-link">
+        <a
+          href="/ETHZuri.ch_PitchDeck.pdf"
+          target="_blank"
+          class="hero__button-link"
+        >
           <button class="hero__button">sponsor ETHZüri.ch</button>
         </a>
       </div>
     </div>
+
     <a href="mailto:contact@ethzuri.ch" class="hero__mail-link">
       contact@ethzuri.ch
     </a>
@@ -40,7 +45,6 @@ const ethZurichImgMobile = ref(
     lastUpdated: new Date('1990').getTime()
   })
 )
-
 </script>
 
 <style scoped lang="stylus">
@@ -82,7 +86,6 @@ mobile-breakpoint = 700px
   @media (min-width mobile-breakpoint)
     display block
 
-
 .hero__is-mobile
   display block
 
@@ -97,7 +100,6 @@ mobile-breakpoint = 700px
   gap 25px
   flex-direction column
   align-items center
-
 
 .hero__buttons
   justify-content space-between
@@ -131,23 +133,19 @@ mobile-breakpoint = 700px
     border-radius 50em
     transition opacity 0.2s linear
 
-
 .hero__button:hover::before
   opacity 1
-
 
 .hero__buttons-row
   display flex
   flex-wrap wrap
   gap 30px
 
-
 @media (min-width 900px)
   .hero__buttons-row
     flex-wrap nowrap
     column-gap 30px
     width 100%
-
 
   .hero__button-one-button
     max-width 100%
