@@ -59,7 +59,6 @@ mobile-breakpoint = 700px
   text-align justify
   height 100vh
   gap 1rem
-  // font-family Formular, Helvetica, sans-serif
 
   @media (min-width mobile-breakpoint)
     background-image url("/ETH_Zu_header.jpg")
@@ -94,7 +93,7 @@ mobile-breakpoint = 700px
 
 .hero__buttons
   max-width 1160px
-  padding 0 var(--app-padding) 3rem
+  padding 0 var(--app-padding) 1rem
   display flex
   width 100%
   gap 25px
@@ -155,11 +154,9 @@ mobile-breakpoint = 700px
   text-decoration none
 
 .hero__mail-link
-  position absolute
-  bottom 0.5rem
-  right 1rem
+  padding-bottom 1rem
   color var(--col-primary-action)
-  font-size 1.2rem
+  font-size clamp(2rem, 4.5vw, 3rem)
   text-decoration none
 
   &:hover
