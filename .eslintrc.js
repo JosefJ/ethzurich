@@ -8,7 +8,8 @@ module.exports = {
     'standard',
     'eslint:recommended',
     'plugin:vue/essential',
-    'plugin:vue/vue3-recommended'
+    'plugin:vue/vue3-recommended',
+    '@nuxtjs/eslint-config-typescript'
   ],
   parserOptions: {
     ecmaVersion: 'latest',

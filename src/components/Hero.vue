@@ -6,28 +6,24 @@
       alt="eth-zurich"
     />
 
-      <div class="hero__buttons">
-        <div class="hero__buttons-row">
-          <a
-            href="https://cfp.paralelnipolis.cz/ethzuri-ch-2022/cfp"
-            target="_blank"
-            class="hero__button-link"
-          >
-            <button class="hero__button">
-              Apply as a speaker
-            </button>
-          </a>
+    <div class="hero__buttons">
+      <div class="hero__buttons-row">
+        <a
+          href="https://cfp.paralelnipolis.cz/ethzuri-ch-2022/cfp"
+          target="_blank"
+          class="hero__button-link"
+        >
+          <button class="hero__button">Apply as a speaker</button>
+        </a>
 
-          <a
-            href="mailto:contact@ethzuri.ch"
-            class="hero__button-link"
-          >
-            <button class="hero__button">
-              sponsor ETHZüri.ch
-            </button>
-          </a>
-        </div>
+        <a href="/ETHZuri.ch_PitchDeck.pdf" target="_blank" class="hero__button-link">
+          <button class="hero__button">sponsor ETHZüri.ch</button>
+        </a>
       </div>
+    </div>
+    <a href="mailto:contact@ethzuri.ch" class="hero__mail-link">
+      contact@ethzuri.ch
+    </a>
     <!-- Testing contentful connection -->
     <!-- <img v-if="useContentful().contentfulData.value" :src="useContentful().contentfulData.value?.[0].profileImage.url"> -->
   </div>
@@ -45,9 +41,6 @@ const ethZurichImgMobile = ref(
   })
 )
 
-const handleLinkClick = () => {
-  alert('to be done')
-}
 </script>
 
 <style scoped lang="stylus">
@@ -162,4 +155,15 @@ mobile-breakpoint = 700px
 .hero__button-link
   width 100%
   text-decoration none
+
+.hero__mail-link
+  position absolute
+  bottom 0.5rem
+  right 1rem
+  color var(--col-primary-action)
+  font-size 1.2rem
+  text-decoration none
+
+  &:hover
+    color var(--col-secondary-action)
 </style>
