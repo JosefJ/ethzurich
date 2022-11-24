@@ -1,24 +1,15 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true
-  },
   extends: [
     'prettier',
-    'standard',
     'eslint:recommended',
     'plugin:vue/essential',
-    'plugin:vue/vue3-recommended'
+    'plugin:vue/vue3-recommended',
+    '@nuxtjs/eslint-config-typescript'
   ],
-  parserOptions: {
-    ecmaVersion: 'latest',
-    parser: '@typescript-eslint/parser',
-    sourceType: 'module'
-  },
-  plugins: ['vue', '@typescript-eslint', 'prettier'],
+  plugins: ['vue', '@typescript-eslint'],
   rules: {
     'vue/multi-word-component-names': 0,
-    'prettier/prettier': 0,
+    // 'prettier/prettier': 0,
     'vue/html-self-closing': 0,
     'space-before-function-paren': 0,
     'vue/no-multiple-template-root': 0,

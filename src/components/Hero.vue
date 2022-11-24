@@ -6,28 +6,36 @@
       alt="eth-zurich"
     />
 
-      <div class="hero__buttons">
-        <div class="hero__buttons-row">
-          <a
-            href="https://cfp.paralelnipolis.cz/ethzuri-ch-2022/cfp"
-            target="_blank"
-            class="hero__button-link"
-          >
-            <button class="hero__button">
-              Apply as a speaker
-            </button>
-          </a>
+    <div class="hero__buttons">
+      <div class="hero__buttons-row">
+        <a
+          href="https://cfp.paralelnipolis.cz/ethzuri-ch-2022/cfp"
+          target="_blank"
+          class="hero__button-link"
+        >
+          <button class="hero__button">Apply as a speaker</button>
+        </a>
 
-          <a
-            href="mailto:contact@ethzuri.ch"
-            class="hero__button-link"
-          >
-            <button class="hero__button">
-              sponsor ETHZüri.ch
-            </button>
-          </a>
-        </div>
+        <a
+          href="/ETHZuri.ch_PitchDeck.pdf"
+          target="_blank"
+          class="hero__button-link"
+        >
+          <button class="hero__button">sponsor ETHZüri.ch</button>
+        </a>
       </div>
+      <a
+          href="mailto:contact@ethzuri.ch"
+          class="hero__button-link"
+        >
+          <button class="hero__button hero__button--email-contact">
+            <span class="hero__button--email-contact-text">
+              contact@ethzuri.ch
+            </span>
+          </button>
+        </a>
+    </div>
+
     <!-- Testing contentful connection -->
     <!-- <img v-if="useContentful().contentfulData.value" :src="useContentful().contentfulData.value?.[0].profileImage.url"> -->
   </div>
@@ -44,10 +52,6 @@ const ethZurichImgMobile = ref(
     lastUpdated: new Date('1990').getTime()
   })
 )
-
-const handleLinkClick = () => {
-  alert('to be done')
-}
 </script>
 
 <style scoped lang="stylus">
@@ -62,7 +66,6 @@ mobile-breakpoint = 700px
   text-align justify
   height 100vh
   gap 1rem
-  // font-family Formular, Helvetica, sans-serif
 
   @media (min-width mobile-breakpoint)
     background-image url("/ETH_Zu_header.jpg")
@@ -89,7 +92,6 @@ mobile-breakpoint = 700px
   @media (min-width mobile-breakpoint)
     display block
 
-
 .hero__is-mobile
   display block
 
@@ -98,16 +100,16 @@ mobile-breakpoint = 700px
 
 .hero__buttons
   max-width 1160px
-  padding 0 var(--app-padding) 3rem
+  padding 0 var(--app-padding) 1rem
   display flex
   width 100%
   gap 25px
   flex-direction column
   align-items center
 
-
 .hero__buttons
   justify-content space-between
+  padding 0 clamp(2rem, 5vw, 5rem) 2rem
 
 .hero__button
   position relative
@@ -138,16 +140,42 @@ mobile-breakpoint = 700px
     border-radius 50em
     transition opacity 0.2s linear
 
+  &--email-contact
+    color white
+    background linear-gradient(#000, #000) padding-box, linear-gradient(to top, var(--col-secondary-action), var(--col-primary-action)) border-box
+    border 3px solid transparent
+
+    &::before
+      position absolute
+      content ""
+      background linear-gradient(#000, #000) padding-box, linear-gradient(to bottom, var(--col-secondary-action), var(--col-primary-action)) border-box
+      inset 0 // same as { top: 0; right: 0; bottom: 0; left: 0; }
+      z-index -1
+      opacity 0
+      border-radius 50em
+      transition opacity 0.2s linear
+
+  &--email-contact-text
+    background linear-gradient(to left, var(--col-secondary-action) -20%, var(--col-primary-action))
+    background-clip text
+    -webkit-text-fill-color transparent
 
 .hero__button:hover::before
   opacity 1
 
+.hero__button--email-contact:hover
+  background linear-gradient(#000, #000) padding-box, linear-gradient(to bottom, var(--col-secondary-action), var(--col-primary-action)) border-box
+
+.hero__button--email-contact:hover .hero__button--email-contact-text
+  background linear-gradient(to right, var(--col-secondary-action) -30%, var(--col-primary-action))
+  background-clip text
+  -webkit-text-fill-color transparent
 
 .hero__buttons-row
   display flex
   flex-wrap wrap
   gap 30px
-
+  width 100%
 
 @media (min-width 900px)
   .hero__buttons-row
@@ -155,11 +183,19 @@ mobile-breakpoint = 700px
     column-gap 30px
     width 100%
 
-
   .hero__button-one-button
     max-width 100%
 
 .hero__button-link
   width 100%
   text-decoration none
+
+.hero__mail-link
+  padding-bottom 1rem
+  color var(--col-primary-action)
+  font-size clamp(2rem, 4.5vw, 3rem)
+  text-decoration none
+
+  &:hover
+    color var(--col-secondary-action)
 </style>
