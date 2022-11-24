@@ -24,11 +24,18 @@
           <button class="hero__button">sponsor ETHZüri.ch</button>
         </a>
       </div>
+      <a
+          href="mailto:contact@ethzuri.ch"
+          class="hero__button-link"
+        >
+          <button class="hero__button hero__button--email-contact">
+            <span class="hero__button--email-contact-text">
+              contact@ethzuri.ch
+            </span>
+          </button>
+        </a>
     </div>
 
-    <a href="mailto:contact@ethzuri.ch" class="hero__mail-link">
-      contact@ethzuri.ch
-    </a>
     <!-- Testing contentful connection -->
     <!-- <img v-if="useContentful().contentfulData.value" :src="useContentful().contentfulData.value?.[0].profileImage.url"> -->
   </div>
@@ -102,6 +109,7 @@ mobile-breakpoint = 700px
 
 .hero__buttons
   justify-content space-between
+  padding 0 clamp(2rem, 5vw, 5rem) 2rem
 
 .hero__button
   position relative
@@ -132,13 +140,42 @@ mobile-breakpoint = 700px
     border-radius 50em
     transition opacity 0.2s linear
 
+  &--email-contact
+    color white
+    background linear-gradient(#000, #000) padding-box, linear-gradient(to top, var(--col-secondary-action), var(--col-primary-action)) border-box
+    border 3px solid transparent
+
+    &::before
+      position absolute
+      content ""
+      background linear-gradient(#000, #000) padding-box, linear-gradient(to bottom, var(--col-secondary-action), var(--col-primary-action)) border-box
+      inset 0 // same as { top: 0; right: 0; bottom: 0; left: 0; }
+      z-index -1
+      opacity 0
+      border-radius 50em
+      transition opacity 0.2s linear
+
+  &--email-contact-text
+    background linear-gradient(to left, var(--col-secondary-action) -20%, var(--col-primary-action))
+    background-clip text
+    -webkit-text-fill-color transparent
+
 .hero__button:hover::before
   opacity 1
+
+.hero__button--email-contact:hover
+  background linear-gradient(#000, #000) padding-box, linear-gradient(to bottom, var(--col-secondary-action), var(--col-primary-action)) border-box
+
+.hero__button--email-contact:hover .hero__button--email-contact-text
+  background linear-gradient(to right, var(--col-secondary-action) -30%, var(--col-primary-action))
+  background-clip text
+  -webkit-text-fill-color transparent
 
 .hero__buttons-row
   display flex
   flex-wrap wrap
   gap 30px
+  width 100%
 
 @media (min-width 900px)
   .hero__buttons-row
