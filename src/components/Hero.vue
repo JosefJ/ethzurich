@@ -21,16 +21,16 @@
           target="_blank"
           class="hero__button-link"
         >
-          <button class="hero__button">sponsor ETHZüri.ch</button>
+          <button class="hero__button">sponsor ETHEREUMZüri.ch</button>
         </a>
       </div>
       <a
-          href="mailto:contact@ethzuri.ch"
+          href="mailto:contact@ethereumzuri.ch"
           class="hero__button-link"
         >
           <button class="hero__button hero__button--email-contact">
             <span class="hero__button--email-contact-text">
-              contact@ethzuri.ch
+              contact@ethereumzuri.ch
             </span>
           </button>
         </a>
@@ -49,7 +49,7 @@ const ethZurichImgMobile = ref(
   new ImageFile({
     url: '/ETH_Zu_header-mobile.jpg',
     id: 'eth-zurich-mobile',
-    lastUpdated: new Date('1990').getTime()
+    lastUpdated: new Date('1991').getTime()
   })
 )
 </script>
