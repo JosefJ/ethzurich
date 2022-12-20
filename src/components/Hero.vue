@@ -9,7 +9,7 @@
     <div class="hero__buttons">
       <div class="hero__buttons-row">
         <a
-          href="https://cfp.paralelnipolis.cz/ethzuri-ch-2023/"
+          href="https://cfp.paralelnipolis.cz/ethereumzurich2023"
           target="_blank"
           class="hero__button-link"
         >
