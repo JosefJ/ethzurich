@@ -9,7 +9,8 @@ module.exports = {
             "no-eol-whitespace": [ true, { "severity": "warning" }],
             "max-empty-lines": [2, { "severity": "warning" }],
             "max-line-length": 200,
-            "declaration-colon-newline-after": null
+            "declaration-colon-newline-after": null,
+            "custom-property-pattern": null
         }
     }
 ]
