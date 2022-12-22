@@ -24,7 +24,7 @@
         </a>
       </div>
       <a
-        :href="links.sponsorEthereumZurich"
+        href="/ETHZuri.ch_PitchDeck.pdf"
         class="manifesto__button-link"
         target="_blank"
       >
@@ -55,13 +55,15 @@
 <script setup lang="ts">
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import DOMPurify from 'dompurify'
-import links from '~/components/links'
 import useContentful from '~/api/useContentful'
 const { content } = useContentful()
 
-const sanitizedManifestoHtml = computed(() =>
-  DOMPurify.sanitize(documentToHtmlString(content.value?.manifestoText.json))
-)
+const sanitizedManifestoHtml = computed(() => {
+  if (!content.value?.manifestoText?.json) return
+  return DOMPurify.sanitize(
+    documentToHtmlString(content.value?.manifestoText.json)
+  )
+})
 </script>
 
 <style scoped lang="stylus">
@@ -69,7 +71,7 @@ mobile-breakpoint = 700px
 
 .manifesto
   display flex
-  margin 50px auto 150px
+  margin 100px auto 150px
   flex-direction column
   align-items center
   width 100%
@@ -93,7 +95,7 @@ mobile-breakpoint = 700px
   display inline-flex
   border 5px solid transparent
   background linear-gradient(var(--col-secondary-action), var(--col-primary-action)) padding-box,
-    linear-gradient(to right, var(--col-secondary-action), var(--col-primary-action)) border-box
+    linear-gradient(to top, var(--col-secondary-action), var(--col-primary-action)) border-box
   z-index 2
   cursor pointer
   justify-content center
@@ -102,14 +104,14 @@ mobile-breakpoint = 700px
   color black
   text-align center
   width 100%
-  height clamp(85px, 16vw, 120px)
-  font-size clamp(1rem, 4.5vw, 1.5rem)
+  height clamp(85px, 16vw, 208px)
+  font-size clamp(0.9rem, 3vw, 40px)
 
   &::before
     position absolute
     content ""
     background linear-gradient(var(--col-primary-action), var(--col-secondary-action)) padding-box,
-      linear-gradient(to right, var(--col-secondary-action), var(--col-primary-action)) border-box
+      linear-gradient(to bottom, var(--col-secondary-action), var(--col-primary-action)) border-box
     inset 0 // same as { top: 0; right: 0; bottom: 0; left: 0; }
     z-index -1
     opacity 0
@@ -132,7 +134,7 @@ mobile-breakpoint = 700px
       transition opacity 0.2s linear
 
   &--email-contact-text
-    background linear-gradient(to left, var(--col-secondary-action) -20%, var(--col-primary-action))
+    background linear-gradient(to bottom, var(--col-secondary-action) -20%, var(--col-primary-action))
     background-clip text
     -webkit-text-fill-color transparent
 
@@ -143,7 +145,7 @@ mobile-breakpoint = 700px
   background linear-gradient(#000, #000) padding-box, linear-gradient(to bottom, var(--col-secondary-action), var(--col-primary-action)) border-box
 
 .manifesto__button--email-contact:hover .manifesto__button--email-contact-text
-  background linear-gradient(to right, var(--col-secondary-action) -30%, var(--col-primary-action))
+  background linear-gradient(to top, var(--col-secondary-action) -30%, var(--col-primary-action))
   background-clip text
   -webkit-text-fill-color transparent
 

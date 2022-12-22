@@ -8,7 +8,7 @@ module.exports = {
             "selector-class-pattern": "^[a-zA-Z][\\w-]*$",
             "no-eol-whitespace": [ true, { "severity": "warning" }],
             "max-empty-lines": [2, { "severity": "warning" }],
-            "max-line-length": 200,
+            "max-line-length": 300,
             "declaration-colon-newline-after": null,
             "custom-property-pattern": null
         }

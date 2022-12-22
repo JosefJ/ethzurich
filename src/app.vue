@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <NuxtPage />
@@ -13,7 +12,6 @@ const { fetchContentfulData } = useContentful()
 onMounted(async () => {
   await fetchContentfulData()
 })
-
 </script>
 
 <style lang="stylus">
@@ -53,5 +51,4 @@ body *
 body
   margin 0
   background-color black
-
 </style>

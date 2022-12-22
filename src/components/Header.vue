@@ -14,19 +14,23 @@
         external
         @click="isHamMenuOpen = false"
       >
-        <img
-          class="header__logo-eth"
-          src="/ethzurich-title.svg"
-          alt="tickets"
-        />
+        <img src="/ethzurich-title.svg" alt="tickets" />
       </NuxtLink>
 
       <div class="header__social-links">
-        <a :href="content.telegramLink" target="_blank">
+        <a
+          v-if="content?.telegramLink"
+          :href="content?.telegramLink"
+          target="_blank"
+        >
           <img src="/telegram.svg" alt="telegram" />
         </a>
 
-        <a :href="content.twitterLink" target="_blank">
+        <a
+          v-if="content?.twitterLink"
+          :href="content?.twitterLink"
+          target="_blank"
+        >
           <img src="/twitter.svg" alt="twitter" />
         </a>
       </div>
@@ -35,22 +39,14 @@
     <Transition name="fade">
       <div v-show="isHamMenuOpen" class="header-mobile__local-links">
         <NuxtLink
-          v-for="localLink in localLinks"
-          :key="localLink"
+          v-for="{ hash, label } in localLinks"
+          :key="label"
           external
           class="header-mobile__local-link"
-          :to="{ path: '/', hash: `#${localLink}` }"
+          :to="{ path: '/', hash }"
           @click="isHamMenuOpen = false"
         >
-          {{ localLink }}
-        </NuxtLink>
-        <NuxtLink
-          class="header-mobile__local-link"
-          external
-          :to="{ path: '/', hash: '#SponsorsAndPartners' }"
-          @click="isHamMenuOpen = false"
-        >
-          Sponsors
+          {{ label }}
         </NuxtLink>
       </div>
     </Transition>
@@ -59,15 +55,9 @@
 
 <script setup lang="ts">
 import useContentful from '~/api/useContentful'
+import localLinks from '~/components/localLinks'
 const { content } = useContentful()
-
 const isHamMenuOpen = ref(false)
-const localLinks = [
-  'Manifesto',
-  // "Hackathon",
-  'Speakers',
-  'FAQ'
-]
 </script>
 
 <style scoped lang="stylus">
@@ -75,7 +65,7 @@ const localLinks = [
   display flex
   flex-direction row
   justify-content flex-end
-  gap 0.9375rem
+  gap 1rem
 
 .header__eth-logo-link
   display none
@@ -133,14 +123,13 @@ const localLinks = [
   top 4.3rem
   width 100%
   z-index 100
+  gap 2.5rem
 
 .header-mobile__local-link
+  font-size 1.7rem
   text-decoration none
+  font-family Chaney, Helvetica, sans-serif
   color black
-  padding 1.4375rem 0.625rem
-  font-size 1.5625rem
-  line-height 1.4375rem
-  letter-spacing 0
   text-align center
 
 // Animation

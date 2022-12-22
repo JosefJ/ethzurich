@@ -5,10 +5,12 @@
     <Manifesto />
     <People />
     <SponsorsAndPartners />
-  <div />
-</div>
+    <FAQ v-if="content?.isSectionFaqVisible" />
+    <Footer />
+  </div>
 </template>
 
 <script setup lang="ts">
-
+import useContentful from '~/api/useContentful'
+const { content } = useContentful()
 </script>

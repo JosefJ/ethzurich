@@ -1,13 +1,13 @@
 <template>
-  <div id="SponsorsAndPartners" class="sponsors-and-partners">
-    <div class="sponsors-and-partners__block">
-      <SectionTitle title="sponsors" />
+  <div id="Sponsors" class="sponsors-and-partners">
+    <SectionTitle title="sponsors" />
+    <div v-if="blockProposer.length > 0" class="sponsors-and-partners__block">
       <div
         class="sponsors-and-partners__small-title sponsors-and-partners__title-block-proposer sponsors-and-partners__title-tier-base"
       >
         Block Proposer
       </div>
-      <div v-if="blockProposer" class="sponsors-and-partners__tier-base-icons">
+      <div class="sponsors-and-partners__tier-base-icons">
         <a
           v-for="company in blockProposer"
           :key="company.name"
@@ -23,16 +23,16 @@
       </div>
     </div>
 
-    <div class="sponsors-and-partners__block">
+    <div
+      v-if="validatorArchivalNode.length > 0"
+      class="sponsors-and-partners__block"
+    >
       <div
         class="sponsors-and-partners__small-title sponsors-and-partners__title-validator-archival-node sponsors-and-partners__title-tier-others"
       >
         Validator Archival Node
       </div>
-      <div
-        v-if="validatorArchivalNode"
-        class="sponsors-and-partners__tier-medium-icons"
-      >
+      <div class="sponsors-and-partners__tier-medium-icons">
         <a
           v-for="company in validatorArchivalNode"
           :key="company.name"
@@ -48,13 +48,13 @@
       </div>
     </div>
 
-    <div class="sponsors-and-partners__block">
+    <div v-if="fullNode.length > 0" class="sponsors-and-partners__block">
       <div
         class="sponsors-and-partners__small-title sponsors-and-partners__title-full-node sponsors-and-partners__title-tier-others"
       >
         Full Node
       </div>
-      <div v-if="fullNode" class="sponsors-and-partners__tier-medium-icons">
+      <div class="sponsors-and-partners__tier-medium-icons">
         <a
           v-for="company in fullNode"
           :key="company.name"
@@ -70,13 +70,13 @@
       </div>
     </div>
 
-    <div class="sponsors-and-partners__block">
+    <div v-if="lightclient.length > 0" class="sponsors-and-partners__block">
       <div
         class="sponsors-and-partners__small-title sponsors-and-partners__title-lightclient sponsors-and-partners__title-tier-others"
       >
         Lightclient
       </div>
-      <div v-if="lightclient" class="sponsors-and-partners__tier-others-icons">
+      <div class="sponsors-and-partners__tier-others-icons">
         <a
           v-for="company in lightclient"
           :key="company.name"
@@ -92,16 +92,13 @@
       </div>
     </div>
 
-    <div class="sponsors-and-partners__block">
+    <div v-if="mediaPartners.length > 0" class="sponsors-and-partners__block">
       <div
         class="sponsors-and-partners__small-title sponsors-and-partners__title-media-partners sponsors-and-partners__title-tier-others"
       >
         Media Partners
       </div>
-      <div
-        v-if="mediaPartners"
-        class="sponsors-and-partners__tier-others-icons"
-      >
+      <div class="sponsors-and-partners__tier-others-icons">
         <a
           v-for="company in mediaPartners"
           :key="company.name"
@@ -141,44 +138,25 @@ enum Tier {
   MEDIA_PARTNERS = 'Media Partners'
 }
 
-type Sponsor = {
-  link: string
-  tier: string
-  logo: {
-    fileName: string
-    sys: {
-      id: string
-      publishedAt: string
-    }
-  }
-  name: string
-}
-
 const blockProposer = computed(() =>
   (sponsors.value || []).filter(
-    (sponsor: Sponsor) => sponsor.tier === Tier.BLOCK_PROPOSER
+    (sponsor) => sponsor.tier === Tier.BLOCK_PROPOSER
   )
 )
-
 const validatorArchivalNode = computed(() =>
   (sponsors.value || []).filter(
-    (sponsor: Sponsor) => sponsor.tier === Tier.VALIDATOR_ARCHIVAL_NODE
+    (sponsor) => sponsor.tier === Tier.VALIDATOR_ARCHIVAL_NODE
   )
 )
-
 const fullNode = computed(() =>
-  (sponsors.value || []).filter(
-    (sponsor: Sponsor) => sponsor.tier === Tier.FULL_NODE
-  )
+  (sponsors.value || []).filter((sponsor) => sponsor.tier === Tier.FULL_NODE)
 )
 const lightclient = computed(() =>
-  (sponsors.value || []).filter(
-    (sponsor: Sponsor) => sponsor.tier === Tier.LIGHTCLIENT
-  )
+  (sponsors.value || []).filter((sponsor) => sponsor.tier === Tier.LIGHTCLIENT)
 )
 const mediaPartners = computed(() =>
   (sponsors.value || []).filter(
-    (sponsor: Sponsor) => sponsor.tier === Tier.MEDIA_PARTNERS
+    (sponsor) => sponsor.tier === Tier.MEDIA_PARTNERS
   )
 )
 </script>

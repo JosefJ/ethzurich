@@ -72,8 +72,10 @@
 </template>
 
 <script setup lang="ts">
-import useContentful from '~/api/useContentful'
 import ImageFile from '~/models/ImageFile'
+
+import useContentful from '~/api/useContentful'
+const { people } = useContentful()
 
 enum Role {
   SPEAKER = 'speaker',
@@ -81,14 +83,13 @@ enum Role {
   MENTOR = 'mentor',
   ALL = 'all'
 }
-const { people } = useContentful()
 const showPeopleWithRole = ref(Role.ALL)
 
 const selectedPeople = computed(() => {
   if (showPeopleWithRole.value === Role.ALL) {
     return people.value
   }
-  return people.value.filter((person: any) =>
+  return (people.value || []).filter((person: any) =>
     person?.role?.includes(showPeopleWithRole.value)
   )
 })
