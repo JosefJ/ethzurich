@@ -8,20 +8,25 @@
         @click="isHamMenuOpen = !isHamMenuOpen"
       />
 
-      <router-link
+      <NuxtLink
         class="header__eth-logo-link"
-        :to="{ path: '/', hash: '#manifesto-buttons' }"
+        :to="{ path: '/', hash: '#Manifesto' }"
+        external
         @click="isHamMenuOpen = false"
       >
-        <img class="header__logo-eth" src="/ethzurich-title.svg" alt="tickets" />
-      </router-link>
+        <img
+          class="header__logo-eth"
+          src="/ethzurich-title.svg"
+          alt="tickets"
+        />
+      </NuxtLink>
 
       <div class="header__social-links">
-        <a :href="links.telegram" target="_blank">
+        <a :href="content.telegramLink" target="_blank">
           <img src="/telegram.svg" alt="telegram" />
         </a>
 
-        <a :href="links.twitter" target="_blank">
+        <a :href="content.twitterLink" target="_blank">
           <img src="/twitter.svg" alt="twitter" />
         </a>
       </div>
@@ -29,29 +34,33 @@
 
     <Transition name="fade">
       <div v-show="isHamMenuOpen" class="header-mobile__local-links">
-        <router-link
+        <NuxtLink
           v-for="localLink in localLinks"
           :key="localLink"
+          external
           class="header-mobile__local-link"
           :to="{ path: '/', hash: `#${localLink}` }"
           @click="isHamMenuOpen = false"
         >
           {{ localLink }}
-        </router-link>
-        <router-link
+        </NuxtLink>
+        <NuxtLink
           class="header-mobile__local-link"
+          external
           :to="{ path: '/', hash: '#SponsorsAndPartners' }"
           @click="isHamMenuOpen = false"
         >
-          Sponsors & Partners
-        </router-link>
+          Sponsors
+        </NuxtLink>
       </div>
     </Transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import links from '~/components/links'
+import useContentful from '~/api/useContentful'
+const { content } = useContentful()
+
 const isHamMenuOpen = ref(false)
 const localLinks = [
   'Manifesto',
@@ -67,8 +76,6 @@ const localLinks = [
   flex-direction row
   justify-content flex-end
   gap 0.9375rem
-  // width 240px
-
 
 .header__eth-logo-link
   display none
@@ -102,11 +109,6 @@ const localLinks = [
   background-color var(--col-primary-action)
   z-index 100
 
-// @media only screen and (min-width 70rem)
-//   .header-mobile
-//     display none
-
-
 .header-mobile__content
   display flex
   justify-content space-around
@@ -118,7 +120,6 @@ const localLinks = [
 .header-mobile__hamburger-menu
   margin 0 16px
   cursor pointer
-
 
 .header-mobile__local-links
   align-items center
@@ -133,7 +134,6 @@ const localLinks = [
   width 100%
   z-index 100
 
-
 .header-mobile__local-link
   text-decoration none
   color black
@@ -147,7 +147,6 @@ const localLinks = [
 .fade-enter-active
 .fade-leave-active
   transition opacity 0.3s
-
 
 .fade-enter-from
 .fade-leave-to

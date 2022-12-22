@@ -4,26 +4,26 @@
       <SectionTitle title="people" class="people__title" />
       <div class="people__header-menu">
         <button
-          :class="headerMenuButtonClasses(Roles.ALL)"
-          @click="showPeopleWithRole = Roles.ALL"
+          :class="headerMenuButtonClasses(Role.ALL)"
+          @click="showPeopleWithRole = Role.ALL"
         >
           all
         </button>
         <button
-          :class="headerMenuButtonClasses(Roles.SPEAKER)"
-          @click="showPeopleWithRole = Roles.SPEAKER"
+          :class="headerMenuButtonClasses(Role.SPEAKER)"
+          @click="showPeopleWithRole = Role.SPEAKER"
         >
           speakers
         </button>
         <button
-          :class="headerMenuButtonClasses(Roles.JUDGE)"
-          @click="showPeopleWithRole = Roles.JUDGE"
+          :class="headerMenuButtonClasses(Role.JUDGE)"
+          @click="showPeopleWithRole = Role.JUDGE"
         >
           judges
         </button>
         <button
-          :class="headerMenuButtonClasses(Roles.MENTOR)"
-          @click="showPeopleWithRole = Roles.MENTOR"
+          :class="headerMenuButtonClasses(Role.MENTOR)"
+          @click="showPeopleWithRole = Role.MENTOR"
         >
           mentors
         </button>
@@ -72,15 +72,20 @@
 </template>
 
 <script setup lang="ts">
-import { Roles } from '~/components/people'
 import useContentful from '~/api/useContentful'
 import ImageFile from '~/models/ImageFile'
 
+enum Role {
+  SPEAKER = 'speaker',
+  JUDGE = 'judge',
+  MENTOR = 'mentor',
+  ALL = 'all'
+}
 const { people } = useContentful()
-const showPeopleWithRole = ref(Roles.ALL)
+const showPeopleWithRole = ref(Role.ALL)
 
 const selectedPeople = computed(() => {
-  if (showPeopleWithRole.value === Roles.ALL) {
+  if (showPeopleWithRole.value === Role.ALL) {
     return people.value
   }
   return people.value.filter((person: any) =>
@@ -110,7 +115,7 @@ const headerMenuButtonClasses = (role: string) =>
   justify-content center
   align-items center
   width 100%
-  padding 0 var(--app-padding)
+  padding 0 clamp(2rem, 5vw, 5rem) 2rem
 
 .people__title
   color var(--col-primary-action) !important
@@ -230,5 +235,4 @@ const headerMenuButtonClasses = (role: string) =>
   background-image url("/twitter_white.svg")
   background-color #50f9
   cursor pointer
-
 </style>

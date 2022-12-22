@@ -17,5 +17,4 @@ defineProps<{
   width 100%
   font-family Chaney, Helvetica, sans-serif
   color var(--col-secondary-action)
-
 </style>

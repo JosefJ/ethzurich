@@ -1,14 +1,10 @@
 <template>
-  <img
-    ref="imageRef"
-    loading="lazy"
-    :src="imageSrc"
-  />
+  <img ref="imageRef" loading="lazy" :src="imageSrc" />
 </template>
 
 <script setup lang="ts">
 import { updateImage, addImage, getImage } from '~/services/idb'
-import ImageFile from '~/models/ImageFile' 
+import ImageFile from '~/models/ImageFile'
 const imageRef = ref()
 const imageSrc = ref()
 const props = defineProps<{
@@ -50,7 +46,6 @@ const giveImageSourcePlease = async () => {
 
   imageSrc.value = imageFile.value.url
 }
-
 </script>
 
 <style scoped lang="stylus">
@@ -75,5 +70,4 @@ const giveImageSourcePlease = async () => {
 //   animation-duration 3.5s
 //   animation-iteration-count infinite
 //   animation-direction alternate
-
 </style>

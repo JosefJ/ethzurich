@@ -3,26 +3,37 @@
     <div class="manifesto__buttons">
       <div class="manifesto__buttons-row">
         <a
-          :href="links.applyToSpeak"
+          v-if="content?.applyToSpeakLink && content?.applyToSpeakLabel"
+          :href="content.applyToSpeakLink"
           target="_blank"
           class="manifesto__button-link"
         >
-          <button class="manifesto__button">Apply to speak</button>
+          <button class="manifesto__button">
+            {{ content.applyToSpeakLabel }}
+          </button>
         </a>
         <a
-          :href="links.applyToHack"
+          v-if="content?.applyToHackLink && content?.applyToHackLabel"
+          :href="content.applyToHackLink"
           target="_blank"
           class="manifesto__button-link"
         >
-          <button class="manifesto__button">Apply to hack</button>
+          <button class="manifesto__button">
+            {{ content.applyToHackLabel }}
+          </button>
         </a>
       </div>
-      <a :href="links.sponsorEthereumZurich" class="manifesto__button-link" target="_blank">
+      <a
+        :href="links.sponsorEthereumZurich"
+        class="manifesto__button-link"
+        target="_blank"
+      >
         <button class="manifesto__button manifesto__button--email-contact">
-          <span class="manifesto__button--email-contact-text">
-            sponsor ethereumzuri.ch
-
-
+          <span
+            v-if="content?.sponsorEthereumZurichLabel"
+            class="manifesto__button--email-contact-text"
+          >
+            {{ content.sponsorEthereumZurichLabel }}
           </span>
         </button>
       </a>
@@ -30,19 +41,27 @@
 
     <div id="Manifesto" class="manifesto__text-container">
       <SectionTitle title="manifesto" />
-      <div class="manifesto__text-content">
-        We're bringing the Ethereum community to the most crypto friendly
-        country & and the cradle of blockchain research! Zürich is one of the
-        last European cities which did not yet have a major Ethereum focused
-        event despite its clear importance and the fact it is a home to many
-        blockchain & Ethereum startups.
-      </div>
+      <!-- eslint-disable vue/no-v-html -->
+      <div
+        v-if="content?.manifestoText"
+        class="manifesto__text-content"
+        v-html="sanitizedManifestoHtml"
+      />
+      <!--eslint-enable-->
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
+import DOMPurify from 'dompurify'
 import links from '~/components/links'
+import useContentful from '~/api/useContentful'
+const { content } = useContentful()
+
+const sanitizedManifestoHtml = computed(() =>
+  DOMPurify.sanitize(documentToHtmlString(content.value?.manifestoText.json))
+)
 </script>
 
 <style scoped lang="stylus">
@@ -61,7 +80,6 @@ mobile-breakpoint = 700px
   padding 0 clamp(2rem, 5vw, 5rem) 2rem
 
 .manifesto__buttons
-  // padding 0 var(--app-padding) 1rem
   display flex
   width 100%
   gap 25px
@@ -159,5 +177,4 @@ mobile-breakpoint = 700px
 .manifesto__text-content
   font-size clamp(1.5rem, 4.5vw, 3.3rem)
   text-align left
-
 </style>

@@ -4,6 +4,7 @@
     <Hero />
     <Manifesto />
     <People />
+    <SponsorsAndPartners />
   <div />
 </div>
 </template>
