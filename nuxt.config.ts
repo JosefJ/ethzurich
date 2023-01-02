@@ -9,9 +9,7 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-16',
       title: 'ETH Zürich',
-      meta: [
-        { name: 'ETH Zürich', content: 'ETH Zürich' }
-      ],
+      meta: [{ name: 'ETH Zürich', content: 'ETH Zürich' }]
     }
   }
 })

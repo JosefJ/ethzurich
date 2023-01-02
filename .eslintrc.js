@@ -4,7 +4,8 @@ module.exports = {
     'eslint:recommended',
     'plugin:vue/essential',
     'plugin:vue/vue3-recommended',
-    '@nuxtjs/eslint-config-typescript'
+    '@nuxtjs/eslint-config-typescript',
+    'plugin:prettier/recommended'
   ],
   plugins: ['vue', '@typescript-eslint'],
   rules: {
@@ -17,6 +18,7 @@ module.exports = {
     'func-call-spacing': 0,
     'no-multiple-empty-lines': [1, { max: 2, maxEOF: 1 }],
     'vue/no-unused-vars': 1,
+    // 'vue/no-v-html': 0,
     quotes: 1,
     'no-unused-vars': 1,
     semi: 1,

@@ -1,54 +1,55 @@
 <template>
   <div class="hero">
     <Image
+      :image-file="ethZurichImgDesktop"
+      class="hero__eth-zurich-img hero__is-desktop"
+      alt="eth-zurich"
+    />
+
+    <Image
       :image-file="ethZurichImgMobile"
       class="hero__eth-zurich-img hero__is-mobile"
       alt="eth-zurich"
     />
+  </div>
 
-    <div class="hero__buttons">
-      <div class="hero__buttons-row">
-        <a
-          href="https://cfp.paralelnipolis.cz/ethereumzurich2023"
-          target="_blank"
-          class="hero__button-link"
-        >
-          <button class="hero__button">Apply as a speaker</button>
-        </a>
-
-        <a
-          href="/ETHZuri.ch_PitchDeck.pdf"
-          target="_blank"
-          class="hero__button-link"
-        >
-          <button class="hero__button">sponsor ETHEREUMZüri.ch</button>
-        </a>
+  <div class="hero__event-date">
+    <div class="hero__event-date-marquee-block">
+      <div class="hero__event-date-marquee-inner to-right">
+        <span>
+          <div v-for="n in 5" :key="n" class="hero__event-date-marquee-item">
+            Ethereumzüri.ch &nbsp; 14. — 16. 4. &nbsp;
+          </div>
+        </span>
+        <span>
+          <div v-for="n in 5" :key="n" class="hero__event-date-marquee-item">
+            Ethereumzüri.ch &nbsp; 14. — 16. 4. &nbsp;
+          </div>
+        </span>
       </div>
-      <a
-          href="mailto:contact@ethereumzuri.ch"
-          class="hero__button-link"
-        >
-          <button class="hero__button hero__button--email-contact">
-            <span class="hero__button--email-contact-text">
-              contact@ethereumzuri.ch
-            </span>
-          </button>
-        </a>
     </div>
-
-    <!-- Testing contentful connection -->
-    <!-- <img v-if="useContentful().contentfulData.value" :src="useContentful().contentfulData.value?.[0].profileImage.url"> -->
+    <div class="hero__event-date-text-mobile">
+      Ethereumzüri.ch <br />
+      14. — 16. 4.
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import ImageFile from '~/models/ImageFile'
-// import useContentful from '~/api/useContentful'
 
 const ethZurichImgMobile = ref(
   new ImageFile({
     url: '/ETH_Zu_header-mobile.jpg',
     id: 'eth-zurich-mobile',
+    lastUpdated: new Date('1991').getTime()
+  })
+)
+
+const ethZurichImgDesktop = ref(
+  new ImageFile({
+    url: 'ETH_Zu_header.jpg',
+    id: 'eth-zurich-desktop',
     lastUpdated: new Date('1991').getTime()
   })
 )
@@ -60,37 +61,10 @@ mobile-breakpoint = 700px
 .hero
   display flex
   flex-direction column
+  width 100%
+  justify-content center
   align-items center
-  width 100%
-  background-color black
-  text-align justify
-  height 100vh
-  gap 1rem
-
-  @media (min-width mobile-breakpoint)
-    background-image url("/ETH_Zu_header.jpg")
-    background-repeat no-repeat
-    background-size 100%
-    justify-content end
-
-.hero__eth-zurich-img
-  width 100%
-
-.hero__image
-  width 100%
-  height 200px
-  background-image url("/ETH_Zu_header-mobile.jpg")
-  background-repeat no-repeat
-  background-size 100%
-
-  @media (min-width mobile-breakpoint)
-    background-image url("/ETH_Zu_header.jpg")
-
-.hero__is-desktop
-  display none
-
-  @media (min-width mobile-breakpoint)
-    display block
+  overflow hidden
 
 .hero__is-mobile
   display block
@@ -98,104 +72,104 @@ mobile-breakpoint = 700px
   @media (min-width mobile-breakpoint)
     display none
 
-.hero__buttons
-  max-width 1160px
-  padding 0 var(--app-padding) 1rem
-  display flex
+.hero__is-desktop
+  display none
+
+  @media (min-width mobile-breakpoint)
+    display block
+
+.hero__eth-zurich-img
   width 100%
-  gap 25px
-  flex-direction column
-  align-items center
 
-.hero__buttons
-  justify-content space-between
-  padding 0 clamp(2rem, 5vw, 5rem) 2rem
+.hero__event-date
+  --marquee-block-width--mobile 470px
+  --marquee-block-width--desktop 680px
 
-.hero__button
-  position relative
-  border-radius 50em
-  display inline-flex
-  border 5px solid transparent
-  background linear-gradient(var(--col-secondary-action), var(--col-primary-action)) padding-box,
-    linear-gradient(to right, var(--col-secondary-action), var(--col-primary-action)) border-box
-  z-index 2
-  cursor pointer
-  justify-content center
-  align-items center
-  text-transform uppercase
+  overflow hidden
+  background-color var(--col-secondary-action)
+  height 110px
+  font-size 27px
   color black
+  display flex
+  align-items center
+
+
+.hero__event-date-marquee-block
+  --total-marquee-items 5
+
+  height 100%
+  overflow hidden
+  position relative
+  display none
+  align-items center
+  width calc(
+    (var(--marquee-block-width--mobile)) * (var(--total-marquee-items))
+  )
+
+
+.hero__event-date-marquee-inner
+  width 200%
+  position absolute
+
+
+.hero__event-date-marquee-inner.to-right
+  animation marquee-right 25s linear infinite
+
+
+.hero__event-date-marquee-item
+  width var(--marquee-block-width--mobile)
+  display inline-block
+  transition all 0.2s ease-out
+
+
+@keyframes marquee-right
+  0%
+    left -100%
+
+
+  100%
+    left 0
+
+
+.hero__event-date-text-mobile
   text-align center
   width 100%
-  height clamp(85px, 16vw, 120px)
-  font-size clamp(1rem, 4.5vw, 1.5rem)
 
-  &::before
-    position absolute
-    content ""
-    background linear-gradient(var(--col-primary-action), var(--col-secondary-action)) padding-box,
-      linear-gradient(to right, var(--col-secondary-action), var(--col-primary-action)) border-box
-    inset 0 // same as { top: 0; right: 0; bottom: 0; left: 0; }
-    z-index -1
-    opacity 0
-    border-radius 50em
-    transition opacity 0.2s linear
 
-  &--email-contact
-    color white
-    background linear-gradient(#000, #000) padding-box, linear-gradient(to top, var(--col-secondary-action), var(--col-primary-action)) border-box
-    border 3px solid transparent
+@media (min-width 1120px)
+  .hero__image-desktop
+    display block
 
-    &::before
-      position absolute
-      content ""
-      background linear-gradient(#000, #000) padding-box, linear-gradient(to bottom, var(--col-secondary-action), var(--col-primary-action)) border-box
-      inset 0 // same as { top: 0; right: 0; bottom: 0; left: 0; }
-      z-index -1
-      opacity 0
-      border-radius 50em
-      transition opacity 0.2s linear
 
-  &--email-contact-text
-    background linear-gradient(to left, var(--col-secondary-action) -20%, var(--col-primary-action))
-    background-clip text
-    -webkit-text-fill-color transparent
+  .hero__event-date
+    height 150px
+    font-size 40px
 
-.hero__button:hover::before
-  opacity 1
 
-.hero__button--email-contact:hover
-  background linear-gradient(#000, #000) padding-box, linear-gradient(to bottom, var(--col-secondary-action), var(--col-primary-action)) border-box
+  .hero__event-date-marquee-block
+    display flex
+    width calc(
+      (var(--marquee-block-width--desktop)) * (var(--total-marquee-items))
+    )
 
-.hero__button--email-contact:hover .hero__button--email-contact-text
-  background linear-gradient(to right, var(--col-secondary-action) -30%, var(--col-primary-action))
-  background-clip text
-  -webkit-text-fill-color transparent
 
-.hero__buttons-row
-  display flex
-  flex-wrap wrap
-  gap 30px
-  width 100%
+  .hero__event-date-marquee-item
+    width var(--marquee-block-width--desktop)
 
-@media (min-width 900px)
-  .hero__buttons-row
-    flex-wrap nowrap
-    column-gap 30px
-    width 100%
 
-  .hero__button-one-button
-    max-width 100%
+  .hero__image-mobile
+    display none
 
-.hero__button-link
-  width 100%
-  text-decoration none
 
-.hero__mail-link
-  padding-bottom 1rem
-  color var(--col-primary-action)
-  font-size clamp(2rem, 4.5vw, 3rem)
-  text-decoration none
+@media (min-width 600px)
+  .hero__event-date-marquee-block
+    display flex
 
-  &:hover
-    color var(--col-secondary-action)
+
+  .hero__event-date-text-mobile
+    display none
+
+
+  .hero__event-date
+    display block
 </style>
